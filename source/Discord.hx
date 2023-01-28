@@ -49,10 +49,10 @@ class DiscordClient
 	{
                 #if desktop
 		DiscordRpc.presence({
-			details: "In the Menus pibby remix",
+			details: "Playing Mods Wastanky",
 			state: null,
 			largeImageKey: 'icon',
-			largeImageText: "Vs Pibby Remix"
+			largeImageText: "Vs Wastanky"
 		});
                 #end
 	}
@@ -93,7 +93,7 @@ class DiscordClient
 			details: details,
 			state: state,
 			largeImageKey: 'icon',
-			largeImageText: "Engine Version: " + MainMenuState.psychEngineVersion,
+			largeImageText: "Wastanky Version: " + MainMenuState.WastankyVersion,
 			smallImageKey : smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
 			startTimestamp : Std.int(startTimestamp / 1000),

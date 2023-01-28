@@ -584,15 +584,15 @@ class TitleState extends MusicBeatState
 					#if PSYCH_WATERMARKS
 					createCoolText(['Mods by'], 15);
 					#else
-					createCoolText(['kiritoXkiller', 'more on credits']);
+					createCoolText(['Wastanky']);
 					#end
 				// credTextShit.visible = true;
 				case 3:
 					#if PSYCH_WATERMARKS
-					addMoreText('KiritoXkiller', 15);
-					addMoreText('Frost-Fire', 15);
-					addMoreText('malke', 15);
-					addMoreText('ayedFNFMaker', 15);
+					addMoreText('Wastanky', 15);
+					addMoreText('ayedFNFmaker', 15);
+					addMoreText('Cassie', 15);
+					addMoreText('Ezra tigerYT', 15);
 					#else
 					addMoreText('present');
 					#end
@@ -605,12 +605,12 @@ class TitleState extends MusicBeatState
 				// credTextShit.screenCenter();
 				case 5:
 					#if PSYCH_WATERMARKS
-					createCoolText(['Not associated', 'with'], -40);
+					createCoolText(['Mods', 'with'], -40);
 					#else
-					createCoolText(['In association', 'with'], -40);
+					createCoolText(['Wastanky', 'with'], -40);
 					#end
 				case 7:
-					addMoreText('newgrounds', -40);
+					addMoreText('Cassie', -40);
 					ngSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
 				case 8:
@@ -635,10 +635,10 @@ class TitleState extends MusicBeatState
 					addMoreText('Vs');
 				// credTextShit.visible = true;
 				case 14:
-					addMoreText('Pibby');
+					addMoreText('Wastanky');
 				// credTextShit.text += '\nNight';
 				case 15:
-					addMoreText('Remix'); // credTextShit.text += '\nFunkin';
+					addMoreText('V2'); // credTextShit.text += '\nFunkin';
 
 				case 16:
 					skipIntro();

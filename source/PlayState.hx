@@ -2324,9 +2324,9 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if(ratingName == '?') {
-			scoreTxt.text = 'You got: ' + songScore + ' | corruption got you: ' + songMisses + ' | Accuracy: ' + ratingName;
+			scoreTxt.text = 'UwU Score: ' + songScore + ' | TvT Misses: ' + songMisses + ' | Accuracy: ' + ratingName;
 		} else {
-			scoreTxt.text = 'You got: ' + songScore + ' | corrpution got you: ' + songMisses +  ' | Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' | ' + '(' + ratingFC + ') ' + ratingName;
+			scoreTxt.text = 'UwU Score: ' + songScore + ' | TvT Misses: ' + songMisses +  ' | Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' | ' + '(' + ratingFC + ') ' + ratingName;
 		}
 
 		if(botplayTxt.visible) {

@@ -25,6 +25,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
+	public static var WastankyVersion:String = '2';
 	public static var psychEngineVersion:String = '0.5.2h'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
@@ -38,7 +39,7 @@ class MainMenuState extends MusicBeatState
 		//#if MODS_ALLOWED 'mods', #end
 		//#if ACHIEVEMENTS_ALLOWED 'awards', #end
 		'credits',
-		'Discord',
+		'Youtube',
 		//#if !switch 'donate', #end
 		'options'
 	];
@@ -47,6 +48,7 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
+	var char:FlxSprite;
 
 	override function create()
 	{
@@ -117,7 +119,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
 			//menuItem.screenCenter(X);
-			menuItem.x = 100;
+			menuItem.x = 130;
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
@@ -129,7 +131,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 64, 0, "Pibby Remix V1.5", 14);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 64, 0, "Vs Wastanky V" + WastankyVersion, 14);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -164,6 +166,53 @@ class MainMenuState extends MusicBeatState
                 #end
 
 		super.create();
+		
+		switch(FlxG.random.int(1, 4))
+		{
+			case 1:
+				char = new FlxSprite(820, 0).loadGraphic(Paths.image('menuchar/WastankyOG'));//put your cords and image here
+				char.frames = Paths.getSparrowAtlas('menuchar/WastankyOG');//here put the name of the xml
+				char.animation.addByPrefix('idleG', 'WastankyOG idle', 16, true);//on 'idle normal' change it to your xml one
+				char.animation.play('idleG');//you can rename the anim however you want to
+			 	char.scrollFactor.set();
+				FlxG.sound.play(Paths.sound('appear'), 2);
+				char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+				char.antialiasing = ClientPrefs.globalAntialiasing;
+				add(char);
+				
+			case 2:
+				char = new FlxSprite(820, 0).loadGraphic(Paths.image('menuchar/WastankyHP'));//put your cords and image here
+				char.frames = Paths.getSparrowAtlas('menuchar/WastankyHP');//here put the name of the xml
+				char.animation.addByPrefix('idleH', 'WastankyHP idle', 16, true);//on 'idle normal' change it to your xml one
+				char.animation.play('idleH');//you can rename the anim however you want to
+			 	char.scrollFactor.set();
+				FlxG.sound.play(Paths.sound('appear'), 2);
+				char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+				char.antialiasing = ClientPrefs.globalAntialiasing;
+				add(char);
+				
+			case 3:
+				char = new FlxSprite(820, 0).loadGraphic(Paths.image('menuchar/WastankyNM'));//put your cords and image here
+				char.frames = Paths.getSparrowAtlas('menuchar/WastankyNM');//here put the name of the xml
+				char.animation.addByPrefix('idleN', 'WastankyNM idle', 16, true);//on 'idle normal' change it to your xml one
+				char.animation.play('idleN');//you can rename the anim however you want to
+			 	char.scrollFactor.set();
+				FlxG.sound.play(Paths.sound('appear'), 2);
+				char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+				char.antialiasing = ClientPrefs.globalAntialiasing;
+				add(char);
+				
+			case 4:
+				char = new FlxSprite(820, 0).loadGraphic(Paths.image('menuchar/WastankyMD'));//put your cords and image here
+				char.frames = Paths.getSparrowAtlas('menuchar/WastankyMD');//here put the name of the xml
+				char.animation.addByPrefix('idleM', 'WastankyMD idle', 16, true);//on 'idle normal' change it to your xml one
+				char.animation.play('idleM');//you can rename the anim however you want to
+			 	char.scrollFactor.set();
+				FlxG.sound.play(Paths.sound('appear'), 2);
+				char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+				char.antialiasing = ClientPrefs.globalAntialiasing;
+				add(char);
+		}
 	}
 
 	#if ACHIEVEMENTS_ALLOWED
@@ -207,21 +256,6 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new TitleState());
 			}
-			
-			if (FlxG.keys.justPressed.F7)
-			{
-				PlayState.SONG = Song.loadFromJson('Canell.Really', 'Canell.Really');
-				FlxG.sound.play(Paths.sound('SECRET'));
-				PlayState.isStoryMode = false;
-				LoadingState.loadAndSwitchState(new PlayState());
-			}
-			
-			if (FlxG.keys.justPressed.F10)
-			{
-				selectedSomethin = true;
-				FlxG.sound.play(Paths.sound('confirmMenu'));
-				LoadingState.loadAndSwitchState(new CreditsState());
-			}
 
 
 			if (controls.ACCEPT)
@@ -251,6 +285,7 @@ class MainMenuState extends MusicBeatState
 						}
 						else
 						{
+							FlxTween.tween(FlxG.camera, {zoom: 2.2}, 1.6,{ease:FlxEase.expoInOut});	
 							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
 							{
 								var daChoice:String = optionShit[curSelected];
